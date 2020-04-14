@@ -1,4 +1,4 @@
-# CYW920721B2EVK-01
+# CYW920706WCDEVAL
 
 ### Overview
 
