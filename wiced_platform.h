@@ -54,6 +54,7 @@
 #include "wiced_hal_gpio.h"
 
 extern void platform_led_init( void );
+extern void platform_puart_flow_control_init( void );
 
 typedef struct
 {
@@ -101,6 +102,13 @@ typedef enum
 #define WICED_PUART_TXD                           WICED_P31      /* pin for PUART TXD         */
 #define WICED_PUART_RXD                           WICED_P33      /* pin for PUART RXD         */
 
+#if PUART_RTS_CTS_FLOW
+#define WICED_PUART_CTS                           WICED_P35      /* pin for PUART CTS         */
+#define WICED_PUART_RTS                           WICED_P30      /* pin for PUART RTS         */
+#else
+#define WICED_PUART_CTS  0
+#define WICED_PUART_RTS  0
+#endif
 /* @} */
 
 /** \addtogroup Platfrom config - Default flash(i.e. flash exists on WICED eval boards) configuration.
@@ -129,5 +137,20 @@ typedef enum
  size while reserving using below.
  */
 #define APPLICATION_SPECIFIC_FLASH_RESERVATION  0
+
+/**
+ * platform_puart_flow_control_pin_init
+ *
+ * Unbond pads to prepare RTS/CTS flow control
+ */
+void platform_puart_flow_control_pin_init(void);
+
+/**
+ * Platform-specific functions to disable pads bonded to pins
+ *
+*/
+void unbond_P11(void);
+void unbond_P30(void);
+void unbond_P35(void);
 
 /* @} */
