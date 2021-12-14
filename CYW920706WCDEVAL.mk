@@ -68,6 +68,9 @@ $(info MESH_CORE_DEBUG_TRACES=$(MESH_CORE_DEBUG_TRACES) MESH_MODELS_DEBUG_TRACES
 $(error $(TARGET) only supports linking 1 mesh debug library at a time)
 endif
 
+# declare which stack version to use in COMPONENT folders
+COMPONENTS+=btstack_v1
+
 #
 # Define the features for this target
 #
